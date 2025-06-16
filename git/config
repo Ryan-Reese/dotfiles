@@ -1,7 +1,7 @@
 [user]
 	name = Ryan-Reese
 	email = thenewteadrinker@gmail.com
-	signingKey = AB9E59C78DF15F22
+	signingkey = /home/rmrr/.ssh/github.pub
 [core]
 	editor = nvim
 	whitespace = error
@@ -26,3 +26,5 @@
 	enabled = true
 [commit]
 	gpgSign = true
+[gpg]
+	format = ssh
