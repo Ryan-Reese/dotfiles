@@ -79,13 +79,13 @@ return {
               { 'kind_icon', 'kind' },
             },
           },
-          border = 'single',
+          border = nil,
         },
         documentation = {
           auto_show = true,
           auto_show_delay_ms = 500,
           window = {
-            border = 'single',
+            border = nil,
           },
         },
       },
@@ -129,7 +129,7 @@ return {
       signature = {
         enabled = true,
         window = {
-          border = 'single',
+          border = nil,
         },
       },
     },

@@ -13,6 +13,7 @@ vim.opt.guicursor = 'a:block'
 vim.opt.termguicolors = true
 vim.opt.signcolumn = 'yes'
 vim.opt.scrolloff = 8
+vim.opt.winborder = 'single'
 
 -- [[ tab options ]]
 vim.opt.tabstop = 4

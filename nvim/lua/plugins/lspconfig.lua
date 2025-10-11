@@ -190,9 +190,20 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
         bashls = {},
+        clangd = {},
+        -- harper_ls = {
+        --   settings = {
+        --     ['harper-ls'] = {
+        --       filetypes = {
+        --         'markdown',
+        --         'typst',
+        --       },
+        --     },
+        --   },
+        -- },
         jdtls = {},
+        ts_ls = {},
         pyright = {},
         rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -226,6 +237,7 @@ return {
         'bash-language-server',
         'black', -- Used to format Python code
         'clangd',
+        -- 'harper-ls',
         'isort', -- Used to sort Python imports
         'jdtls',
         'lua-language-server',
@@ -234,6 +246,7 @@ return {
         'rust-analyzer',
         'stylua', -- Used to format Lua code
         'tinymist', -- Typst
+        'typescript-language-server',
         'typstyle',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
