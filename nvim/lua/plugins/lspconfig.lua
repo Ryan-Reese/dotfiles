@@ -192,16 +192,6 @@ return {
       local servers = {
         bashls = {},
         clangd = {},
-        -- harper_ls = {
-        --   settings = {
-        --     ['harper-ls'] = {
-        --       filetypes = {
-        --         'markdown',
-        --         'typst',
-        --       },
-        --     },
-        --   },
-        -- },
         jdtls = {},
         ts_ls = {},
         pyright = {},
