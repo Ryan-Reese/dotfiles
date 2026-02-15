@@ -1,0 +1,30 @@
+[user]
+	name = Ryan-Reese
+	email = ryreese@nvidia.com 
+	signingkey = ~/.ssh/main.pub
+[core]
+	editor = nvim
+	whitespace = error
+[init]
+	defaultBranch = main
+[status]
+	branch = true
+	showStash = true
+[log]
+	decorate = short
+[diff]
+	renames = copies
+[push]
+	default = nothing
+[rerere]
+	enabled = true
+[commit]
+	gpgSign = true
+[gpg]
+	format = ssh
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential

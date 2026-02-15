@@ -1,0 +1,88 @@
+return {
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  lazy = false,
+  config = function()
+    require('lualine').setup {
+      options = {
+        icons_enabled = true,
+        theme = 'bamboo',
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+        disabled_filetypes = {
+          statusline = {},
+          winbar = {},
+        },
+        ignore_focus = {},
+        always_divide_middle = true,
+        always_show_tabline = true,
+        globalstatus = true,
+        refresh = {
+          statusline = 100,
+          tabline = 100,
+          winbar = 100,
+          refresh_time = 16,
+          events = {
+            'WinEnter',
+            'BufEnter',
+            'BufWritePost',
+            'SessionLoadPost',
+            'FileChangedShellPost',
+            'VimResized',
+            'Filetype',
+            'CursorMoved',
+            'CursorMovedI',
+            'ModeChanged',
+          },
+        },
+      },
+      sections = {
+        lualine_a = { 'mode' },
+        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_c = {
+          {
+            '%=',
+            separator = '',
+          },
+          {
+            'filename',
+            file_status = false,
+            path = 1,
+            shorting_target = 40,
+            separator = '',
+          },
+          {
+            'filetype',
+            colored = true,
+            icon_only = true,
+          },
+        },
+        lualine_x = {},
+        lualine_y = { 'lsp_status' },
+        lualine_z = { 'location' },
+      },
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { 'filename' },
+        lualine_x = { 'location' },
+        lualine_y = {},
+        lualine_z = {},
+      },
+      tabline = {},
+      winbar = {},
+      inactive_winbar = {},
+      extensions = {
+        'fugitive',
+        'fzf',
+        'lazy',
+        'man',
+        'mason',
+        'nvim-dap-ui',
+        'oil',
+        'quickfix',
+        'trouble',
+      },
+    }
+  end,
+}

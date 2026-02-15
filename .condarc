@@ -1,0 +1,8 @@
+channels:
+  - conda-forge
+  - defaults
+
+create_default_packages:
+  - pynvim
+
+auto_activate: false
