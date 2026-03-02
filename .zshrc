@@ -50,3 +50,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 # <<< oh my zsh <<<
+#
+# source API keys into env
+source ~/.keys
