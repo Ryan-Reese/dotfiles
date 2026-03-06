@@ -1,0 +1,7 @@
+# Stow default ignores are replaced when this file exists,
+# so re-include the important defaults:
+\.git
+\.gitignore
+
+# Project-scope Claude settings (not user-scope)
+\.claude/settings\.local\.json
