@@ -3,5 +3,6 @@
 \.git
 \.gitignore
 
-# Project-scope Claude settings (not user-scope)
+# Project-scope files (not user-scope)
 \.claude/settings\.local\.json
+CLAUDE\.md
