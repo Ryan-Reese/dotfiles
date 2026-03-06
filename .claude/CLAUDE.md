@@ -49,6 +49,9 @@ project/
 - Once changes have been committed, they should be merged back into main
 - Upon successful merging into main, the secondary worktree can be removed
 
+### Follow SemVer
+- Whenever releasing different versions of a package, always follow the Semantic Versioning 2.0.0 Specification, which can be found for example at https://semver.org/
+
 ## Project Layout
 
 When creating ANY new project:

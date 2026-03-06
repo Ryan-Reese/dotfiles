@@ -227,6 +227,7 @@ return {
         'bash-language-server',
         'black', -- Used to format Python code
         'clangd',
+        'clang-format',
         'dockerfile-language-server',
         -- 'harper-ls',
         'isort', -- Used to sort Python imports
