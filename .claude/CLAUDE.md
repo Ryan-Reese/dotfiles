@@ -49,6 +49,9 @@ project/
 - Once changes have been committed, they should be merged back into main
 - Upon successful merging into main, the secondary worktree can be removed
 
+### Follow Conventional Commits
+- Whenever committing or submitting a pull request, always follow the Conventional Commits 1.0.0 Specification, which can be found for example at https://www.conventionalcommits.org/en/v1.0.0/
+
 ### Follow SemVer
 - Whenever releasing different versions of a package, always follow the Semantic Versioning 2.0.0 Specification, which can be found for example at https://semver.org/
 
