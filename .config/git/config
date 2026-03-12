@@ -14,10 +14,14 @@
 	decorate = short
 [diff]
 	renames = copies
+[merge]
+	conflictStyle = diff3
 [push]
 	default = nothing
 [rerere]
 	enabled = true
+[alias]
+    tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [commit]
 	gpgSign = true
 [gpg]
