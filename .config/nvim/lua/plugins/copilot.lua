@@ -19,7 +19,6 @@ return {
           next = false,
           prev = false,
           dismiss = '<C-k>',
-          toggle_auto_trigger = '<C-l>',
         },
       },
       nes = {

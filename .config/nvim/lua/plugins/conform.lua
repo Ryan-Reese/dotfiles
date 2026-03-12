@@ -34,7 +34,7 @@ return {
         -- Conform can also run multiple formatters sequentially
         python = function(bufnr)
           if require('conform').get_formatter_info('ruff_format', bufnr).available then
-            return { 'ruff_organize_imports', 'ruff_format' }
+            return { 'ruff_organize_imports', 'ruff_fix', 'ruff_format' }
           else
             return { 'isort', 'black' }
           end

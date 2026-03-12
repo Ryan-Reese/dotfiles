@@ -2,6 +2,7 @@
 /.ssh/known_hosts*
 /.ssh/authorized_keys
 /.keys
+**/.DS_Store
 
 # Claude Code project-scope settings (not user-scope)
 /.claude/settings.local.json
