@@ -74,7 +74,9 @@ return {
           winblend = 10,
         },
       },
-      vim.keymap.set('n', '<leader>sv', '<CMD>Oil<CR>', { desc = 'Open parent directory' }),
     }
   end,
+  keys = {
+    { '-', '<CMD>Oil<CR>', desc = 'Open parent directory' },
+  },
 }

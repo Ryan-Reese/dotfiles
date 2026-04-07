@@ -14,12 +14,23 @@
 	decorate = short
 [diff]
 	renames = copies
+	algorithm = histogram
 [merge]
 	conflictStyle = diff3
 [push]
 	default = nothing
 [rerere]
 	enabled = true
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+[branch]
+	sort = -committerdate
+[column]
+	ui = auto
+[rebase]
+	autoStash = true
 [alias]
     tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [commit]

@@ -4,6 +4,6 @@ return {
   },
   {
     'tpope/vim-rhubarb',
-    after = 'vim-fugitive',
+    dependencies = { 'tpope/vim-fugitive' },
   },
 }

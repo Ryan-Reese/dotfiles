@@ -4,31 +4,33 @@ return {
   cmd = 'Copilot',
   build = ':Copilot auth',
   event = 'InsertEnter',
-  config = function()
-    require('copilot').setup {
-      panel = {
-        enabled = false,
+  keys = {
+    {
+      '<leader>ta',
+      function()
+        require('copilot.suggestion').toggle_auto_trigger()
+      end,
+      desc = '[T]oggle [A]I auto-trigger',
+    },
+  },
+  opts = {
+    panel = {
+      enabled = false,
+    },
+    suggestion = {
+      enabled = true,
+      auto_trigger = false,
+      trigger_on_accept = true,
+      debounce = 15,
+      keymap = {
+        accept = '<C-j>',
+        next = false,
+        prev = false,
+        dismiss = '<C-k>',
       },
-      suggestion = {
-        enabled = true,
-        auto_trigger = false,
-        trigger_on_accept = true,
-        debouce = 15,
-        keymap = {
-          accept = '<C-j>',
-          next = false,
-          prev = false,
-          dismiss = '<C-k>',
-        },
-      },
-      nes = {
-        enabled = false,
-        -- keymap = {
-        --   accept_and_goto = '<C-S-j>',
-        --   accept = false,
-        --   dismiss = '<C-S-k>',
-        -- },
-      },
-    }
-  end,
+    },
+    nes = {
+      enabled = false,
+    },
+  },
 }

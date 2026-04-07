@@ -1,7 +1,15 @@
 return {
   'nvim-mini/mini.map',
   version = false,
-  lazy = false,
+  keys = {
+    {
+      '<leader>tm',
+      function()
+        require('mini.map').toggle()
+      end,
+      desc = '[T]oggle [M]inimap',
+    },
+  },
   config = function()
     local map = require 'mini.map'
     map.setup {
@@ -9,7 +17,7 @@ return {
 
       -- Highlight integrations (none by default)
       integrations = {
-        map.gen_integration.builtin_search(),
+        require('mini.map').gen_integration.builtin_search(),
       },
 
       -- Symbols used to display data
@@ -46,13 +54,4 @@ return {
       },
     }
   end,
-  keys = {
-    {
-      '<leader>mm',
-      function()
-        require('mini.map').toggle()
-      end,
-      desc = 'Toggle [m]ini[m]ap',
-    },
-  },
 }

@@ -3,20 +3,18 @@ return {
   -- Uncomment next line if you want to follow only stable versions
   version = '*',
   keys = {
-    { '<Leader>doc', ":lua require('neogen').generate()<CR>", desc = 'Generate docstring' },
+    { 'grg', ":lua require('neogen').generate()<CR>", desc = '[G]enerate docstring' },
   },
-  config = function()
-    require('neogen').setup {
-      enabled = true,
-      input_after_comment = true,
-      languages = {
-        python = {
-          template = {
-            annotation_convention = 'numpydoc',
-          },
+  opts = {
+    enabled = true,
+    input_after_comment = true,
+    languages = {
+      python = {
+        template = {
+          annotation_convention = 'numpydoc',
         },
       },
-      snippet_engine = 'luasnip',
-    }
-  end,
+    },
+    snippet_engine = 'luasnip',
+  },
 }

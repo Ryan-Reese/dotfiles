@@ -10,7 +10,6 @@ vim.opt.cursorline = true
 
 -- [[ visual options ]]
 vim.opt.guicursor = 'a:block'
-vim.opt.termguicolors = true
 vim.opt.signcolumn = 'yes'
 vim.opt.scrolloff = 8
 vim.opt.winborder = 'single'
@@ -26,9 +25,6 @@ vim.opt.expandtab = true
 vim.opt.breakindent = true
 vim.opt.cindent = true
 vim.opt.wrap = true
-
--- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
@@ -48,7 +44,6 @@ vim.opt.backup = false
 vim.opt.confirm = true
 
 -- [[ searching options ]]
-vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 

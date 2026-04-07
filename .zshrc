@@ -1,55 +1,52 @@
 . "$HOME/.local/bin/env"
+typeset -U path
 
-# >>> set EDITOR >>>
+# --- History ---
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+
+# --- Editor ---
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+    export VISUAL='vim'
+    export EDITOR='vim'
 else
-  export EDITOR='nvim'
+    export VISUAL='nvim'
+    export EDITOR='nvim'
 fi
-# <<< set EDITOR <<<
 
-# >>> ssh key >>>
-#eval `ssh-agent`
-#ssh-add "/Users/ryreese/.ssh/main"
-# <<< ssh key  <<<
+# --- Environment ---
+export TMS_CONFIG_FILE="$HOME/.config/tms/config.toml"
 
-# >>> add rust to path >>>
-export PATH="$(brew --prefix rustup)/bin:$PATH"
-# <<< add rust to path <<<
-#
-# >>> set tms config path >>>
-export TMS_CONFIG_FILE="/Users/ryreese/.config/tms/config.toml"
-# <<< set tms config path <<<
-#
-# >>> conda initialize >>>
-function conda_init() {
-    __conda_setup="$('/Users/ryreese/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/Users/ryreese/miniforge3/etc/profile.d/conda.sh" ]; then
-            . "/Users/ryreese/miniforge3/etc/profile.d/conda.sh"
-        else
-            export PATH="/Users/ryreese/miniforge3/bin:$PATH"
-        fi
-    fi
-    unset __conda_setup
-}
-# <<< conda initialize <<<
+# --- fzf (uses fd for speed) ---
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd --type d --hidden --exclude .git'
 
-# >>> oh my zsh >>>
+# --- Aliases ---
+alias conda-init="source $HOME/miniforge3/bin/activate"
+alias brew-steep="brew update && brew upgrade && brew cleanup"
+
+# --- Oh My Zsh ---
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 plugins=(
     git
     colored-man-pages
     command-not-found
+    fzf
     vi-mode
     conda-env
 )
+source "$ZSH/oh-my-zsh.sh"
 
-source $ZSH/oh-my-zsh.sh
-# <<< oh my zsh <<<
-#
-# source API keys into env
-source ~/.keys
+# --- Zsh plugins (Homebrew) ---
+source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# --- API keys ---
+[[ -f ~/.keys ]] && source ~/.keys
