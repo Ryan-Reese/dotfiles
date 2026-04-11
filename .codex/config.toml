@@ -1,0 +1,47 @@
+model = "gpt-5.4"
+model_reasoning_effort = "xhigh"
+plan_mode_reasoning_effort = "xhigh"
+service_tier = "fast"
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+[projects."/Users/ryreese/Documents/nvidia/nvalchemi-toolkit"]
+trust_level = "trusted"
+
+[projects."/Users/ryreese/Documents/nvidia/alchemi-playbook"]
+trust_level = "trusted"
+
+[projects."/Users/ryreese/dotfiles"]
+trust_level = "trusted"
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."life-science-research@openai-curated"]
+enabled = true
+
+[plugins."slack@openai-curated"]
+enabled = true
+
+[tui]
+status_line = ["model-with-reasoning", "fast-mode", "context-used", "current-dir", "git-branch", "five-hour-limit"]
+
+[mcp_servers.maas_gitlab]
+url = "https://maas.prd.astra.nvidia.com/maas/gitlab/mcp"
+
+[mcp_servers.maas_outlook]
+url = "https://maas.prd.astra.nvidia.com/maas/outlook/mcp"
+
+[mcp_servers.maas_gdrive]
+url = "https://maas.prd.astra.nvidia.com/maas/gdrive/mcp"
+
+[mcp_servers.maas_onedrive]
+url = "https://maas.prd.astra.nvidia.com/maas/onedrive/mcp"
+
+[mcp_servers.maas_confluence]
+url = "https://maas.prd.astra.nvidia.com/maas/confluence/mcp"
+
+[mcp_servers.maas_sharepoint]
+url = "https://maas.prd.astra.nvidia.com/maas/sharepoint/mcp"
+
+[mcp_servers.maas_slack]
+url = "https://maas.stg.astra.nvidia.com/maas/slack/mcp"

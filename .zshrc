@@ -46,6 +46,22 @@ source "$ZSH/oh-my-zsh.sh"
 
 # --- Zsh plugins (Homebrew) ---
 source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+# Tab accepts autosuggestion when one is visible and cursor is at end of line;
+# otherwise falls through to normal completion/cycling
+function _accept_autosuggest_or_complete() {
+    if [[ $CURSOR -eq ${#BUFFER} ]] && [[ -n "$POSTDISPLAY" ]]; then
+        zle autosuggest-accept
+    else
+        zle expand-or-complete
+    fi
+}
+zle -N _accept_autosuggest_or_complete
+bindkey '^I' _accept_autosuggest_or_complete
+
+# Ctrl+K dismisses the current autosuggestion (use before Tab to get completions instead)
+bindkey '^K' autosuggest-clear
+
 source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # --- API keys ---

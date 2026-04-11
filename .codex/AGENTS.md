@@ -15,8 +15,8 @@
 These rules are ABSOLUTE:
 
 ### NEVER Mention Claude/AI in Outputs
-- **No co-author lines**: Do NOT include `Generated with Claude Code`, `Co-Authored-By: Claude`, or similar attributions
-- NEVER reference Claude, AI, or yourself in commit messages, PR descriptions, code comments, or any documentation
+- **No co-author lines**: Do NOT include `Generated with Codex Code`, `Co-Authored-By: Codex`, or similar attributions
+- NEVER reference Codex, AI, or yourself in commit messages, PR descriptions, code comments, or any documentation
 
 ### NEVER Publish Sensitive Data
 - NEVER publish passwords, API keys, tokens to git/npm/docker
@@ -58,7 +58,7 @@ When creating a **new software project** (does not apply to config repos, dotfil
 ### Example Files
 - `.env` - Environment variables (NEVER commit)
 - `.env.example` - Template with placeholders
-- `CLAUDE.md` - Project overview
+- `AGENTS.md` - Project overview
 - `.gitignore` - By default, follow the gitignore for the respective language found in GitHub's gitignore repository which can be accessed at `git@github.com:github/gitignore.git`
 
 An example project layout would take the form:
@@ -66,7 +66,7 @@ An example project layout would take the form:
 project/
 ├── .git/
 ├── .gitignore/
-├── CLAUDE.md
+├── AGENTS.md
 ├── main/
 │   ├── src/       # Source code
 │   ├── tests/     # Test suites
