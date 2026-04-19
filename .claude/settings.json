@@ -31,5 +31,6 @@
     }
   },
   "effortLevel": "high",
-  "autoDreamEnabled": true
+  "autoDreamEnabled": true,
+  "skipAutoPermissionPrompt": true
 }

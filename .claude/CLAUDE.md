@@ -28,6 +28,9 @@ These rules are ABSOLUTE:
 
 ## Version Control
 
+### Git Commands Require Unsandboxed Execution
+- Git commands that contact remotes (push, pull, fetch, clone, prune) MUST run with `dangerouslyDisableSandbox: true` — the sandbox blocks SSH agent access
+
 ### ALWAYS Ensure Git Initialised
 - Always ensure that the project is version-controlled using Git in the root folder of the project
 

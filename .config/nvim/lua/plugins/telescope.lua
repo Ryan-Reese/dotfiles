@@ -67,8 +67,11 @@ return {
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
 
       vim.keymap.set('n', '<leader>sf', function()
+        builtin.git_files { show_untracked = true }
+      end, { desc = '[S]earch [F]iles (git)' })
+      vim.keymap.set('n', '<leader>sF', function()
         builtin.find_files { hidden = true, no_ignore = true, no_ignore_parent = true }
-      end, { desc = '[S]earch [F]iles' })
+      end, { desc = '[S]earch [F]iles (all)' })
 
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
