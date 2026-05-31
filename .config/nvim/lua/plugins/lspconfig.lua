@@ -135,74 +135,59 @@ return {
         },
       }
 
-      -- LSP servers and clients are able to communicate to each other what features they support.
-      --  By default, Neovim doesn't support everything that is in the LSP specification.
-      --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
-      --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
+      -- Broadcast blink.cmp's extra completion capabilities to every server.
+      --  On Neovim 0.11+, blink already registers these on `vim.lsp.config('*')`
+      --  automatically, so this is explicit-but-optional (kept for clarity).
       local capabilities = require('blink.cmp').get_lsp_capabilities()
+      vim.lsp.config('*', { capabilities = capabilities })
 
-      -- Enable the following language servers
-      --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-      --
-      --  Add any additional override configuration in the following tables. Available keys are:
-      --  - cmd (table): Override the default command used to start the server
-      --  - filetypes (table): Override the default list of associated filetypes for the server
-      --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-      --  - settings (table): Override the default settings passed when initializing the server.
-      --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-      local servers = {
-        lua_ls = {
-          -- cmd = { ... },
-          -- filetypes = { ... },
-          -- capabilities = {},
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+      -- Per-server overrides. These merge with the defaults that nvim-lspconfig
+      --  ships in its `lsp/<server>.lua` runtime files (cmd, filetypes, root).
+      --  See https://luals.github.io/wiki/settings/ for lua_ls options.
+      vim.lsp.config('lua_ls', {
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = 'Replace',
             },
+            -- Toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+            -- diagnostics = { disable = { 'missing-fields' } },
           },
+        },
+      })
+
+      -- Install servers, formatters and linters with Mason. Names here are Mason
+      --  package names (not lspconfig names). mason-lspconfig then auto-enables
+      --  (`vim.lsp.enable`) every installed server.
+      require('mason-tool-installer').setup {
+        ensure_installed = {
+          'bash-language-server',
+          'black', -- Used to format Python code
+          'clang-format',
+          'clangd',
+          'dockerfile-language-server',
+          -- 'harper-ls',
+          'isort', -- Used to sort Python imports
+          'jdtls',
+          'lua-language-server',
+          'pyright',
+          'ruff',
+          'rust-analyzer',
+          'stylua', -- Used to format Lua code
+          'tinymist', -- Typst
+          'typescript-language-server',
+          'typstyle',
         },
       }
 
-      -- Ensure the servers and tools above are installed
-      -- To check the current status of installed tools and/or manually install
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'bash-language-server',
-        'black', -- Used to format Python code
-        'clang-format',
-        'clangd',
-        'dockerfile-language-server',
-        -- 'harper-ls',
-        'isort', -- Used to sort Python imports
-        'jdtls',
-        'lua-language-server',
-        'pyright',
-        'ruff',
-        'rust-analyzer',
-        'stylua', -- Used to format Lua code
-        'tinymist', -- Typst
-        'typescript-language-server',
-        'typstyle',
-      })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
+      -- mason-lspconfig 2.x: the old `handlers`/`setup_handlers` API was removed.
+      --  It now just enables installed servers via `vim.lsp.enable()`. Exclude
+      --  `stylua`: nvim-lspconfig ships an `lsp/stylua.lua` (stylua --lsp), which
+      --  would otherwise start a redundant formatting server -- formatting is
+      --  handled by conform.nvim.
       require('mason-lspconfig').setup {
-        ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-        automatic_installation = false,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
+        ensure_installed = {}, -- installs are driven by mason-tool-installer above
+        automatic_enable = { exclude = { 'stylua' } },
       }
     end,
   },
