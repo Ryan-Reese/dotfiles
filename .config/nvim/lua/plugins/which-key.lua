@@ -63,6 +63,8 @@ return {
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>x', group = 'Diagnostics (Trouble)' },
+        { 'gr', group = '[G]oto / Refactor' },
+        { 'gc', group = '[C]omment', mode = { 'n', 'x' } },
       },
     },
   },

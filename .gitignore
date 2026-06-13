@@ -1,6 +1,7 @@
 /.ssh/main
 /.ssh/known_hosts*
 /.ssh/authorized_keys
+/.config/enroot/.credentials
 /.keys
 **/.DS_Store
 **/*.log

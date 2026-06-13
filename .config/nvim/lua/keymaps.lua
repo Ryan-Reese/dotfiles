@@ -16,9 +16,27 @@ vim.keymap.set('n', 'Q', '<nop>', { desc = 'nop' })
 -- paste over visual selection without clobbering register
 vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Paste without clobbering register' })
 
--- insert lines above or below without moving cursor
-vim.keymap.set('n', '<leader>o', 'm`o<Esc>``', { desc = 'Insert line below' })
-vim.keymap.set('n', '<leader>O', 'm`O<Esc>``', { desc = 'Insert line above' })
+-- insert [count] blank lines above or below without moving the cursor or leaving normal mode
+local function insert_blank_lines(above)
+  local count = vim.v.count1
+  local pos = vim.api.nvim_win_get_cursor(0) -- { row (1-based), col (0-based) }
+  local row = pos[1]
+  local blanks = {}
+  for _ = 1, count do
+    blanks[#blanks + 1] = ''
+  end
+  local at = above and row - 1 or row -- 0-based insertion index
+  vim.api.nvim_buf_set_lines(0, at, at, false, blanks)
+  -- keep the cursor on the original line (it shifts down by `count` when inserting above)
+  vim.api.nvim_win_set_cursor(0, { above and row + count or row, pos[2] })
+end
+
+vim.keymap.set('n', '<leader>o', function()
+  insert_blank_lines(false)
+end, { desc = 'Insert line below' })
+vim.keymap.set('n', '<leader>O', function()
+  insert_blank_lines(true)
+end, { desc = 'Insert line above' })
 
 -- toggle line wrapping
 vim.keymap.set('n', '<leader>tw', function()

@@ -1,13 +1,17 @@
 {
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "ask": [],
     "defaultMode": "plan",
     "disableBypassPermissionsMode": "disable"
   },
-  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
-    "command": "bash ~/.claude/statusline-command.sh"
+    "command": "bash ~/.claude/statusline-command.sh",
+    "refreshInterval": 5
   },
   "enabledPlugins": {
     "code-review@claude-plugins-official": true,
@@ -20,7 +24,11 @@
     "pyright-lsp@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "codex@openai-codex": true,
-    "greptile@claude-plugins-official": true
+    "clangd-lsp@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "obsidian@obsidian-skills": true
   },
   "extraKnownMarketplaces": {
     "openai-codex": {
@@ -28,8 +36,30 @@
         "source": "github",
         "repo": "openai/codex-plugin-cc"
       }
+    },
+    "obsidian-skills": {
+      "source": {
+        "source": "github",
+        "repo": "kepano/obsidian-skills"
+      }
+    },
+    "agricidaniel-claude-obsidian": {
+      "source": {
+        "source": "github",
+        "repo": "AgriciDaniel/claude-obsidian"
+      }
+    },
+    "vault": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/ryreese/Documents/vault"
+      }
     }
   },
+  "viewMode": "verbose",
   "effortLevel": "xhigh",
-  "autoDreamEnabled": true
+  "autoDreamEnabled": true,
+  "skipWorkflowUsageWarning": true,
+  "editorMode": "vim",
+  "skipAutoPermissionPrompt": true
 }

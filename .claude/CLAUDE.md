@@ -21,10 +21,7 @@ These rules are ABSOLUTE:
 ### NEVER Publish Sensitive Data
 - NEVER publish passwords, API keys, tokens to git/npm/docker
 - Before ANY commit: verify no secrets included
-
-### NEVER Commit .env Files
 - NEVER commit `.env` to git
-- ALWAYS verify `.env` is in `.gitignore`
 
 ## Version Control
 
@@ -57,12 +54,6 @@ Types: `feat`, `fix`, `chore`, `docs`, `refactor`, `test`, `ci`, `build`
 ## Project Layout
 
 When creating a **new software project** (does not apply to config repos, dotfiles, or other non-standard layouts):
-
-### Example Files
-- `.env` - Environment variables (NEVER commit)
-- `.env.example` - Template with placeholders
-- `CLAUDE.md` - Project overview
-- `.gitignore` - By default, follow the gitignore for the respective language found in GitHub's gitignore repository which can be accessed at `git@github.com:github/gitignore.git`
 
 An example project layout would take the form:
 

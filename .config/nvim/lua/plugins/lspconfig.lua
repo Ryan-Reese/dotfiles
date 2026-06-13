@@ -55,6 +55,12 @@ return {
           --  To jump back, press <C-t>.
           map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
+          -- Jump to the definition in a vertical split, keeping the current
+          -- buffer on the left (splitright is set in options.lua).
+          map('grD', function()
+            require('telescope.builtin').lsp_definitions { jump_type = 'vsplit' }
+          end, '[G]oto [D]efinition (vsplit)')
+
           -- Find references for the word under your cursor.
           map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
@@ -111,6 +117,19 @@ return {
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
+          end
+
+          -- Rename the symbol under the cursor across the project. Neovim 0.11+ already binds
+          -- this to `grn` by default; mapping it explicitly here just gives it an `LSP: ...`
+          -- description so it reads consistently with the rest of the `gr` family in which-key.
+          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_rename, event.buf) then
+            map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
+          end
+
+          -- Code actions (quickfixes, refactors) for the cursor position or visual selection.
+          -- Also a Neovim 0.11+ default (`gra`); mapped explicitly for a consistent label.
+          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_codeAction, event.buf) then
+            map('gra', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
           end
         end,
       })

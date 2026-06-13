@@ -37,7 +37,6 @@ ZSH_THEME="robbyrussell"
 plugins=(
     git
     colored-man-pages
-    command-not-found
     fzf
     vi-mode
     conda-env
@@ -66,3 +65,5 @@ source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 
 # --- API keys ---
 [[ -f ~/.keys ]] && source ~/.keys
+export PATH="/opt/homebrew/opt/util-linux/bin:$PATH"
+export PATH="/opt/homebrew/opt/util-linux/sbin:$PATH"

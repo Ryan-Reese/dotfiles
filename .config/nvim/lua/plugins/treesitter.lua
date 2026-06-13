@@ -10,6 +10,7 @@ local ensure_installed = {
   'cpp',
   'css',
   'csv',
+  'cuda',
   'diff',
   'git_config',
   'git_rebase',
