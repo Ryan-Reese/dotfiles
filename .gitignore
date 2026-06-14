@@ -3,6 +3,7 @@
 /.ssh/authorized_keys
 /.config/enroot/.credentials
 /.keys
+/.env
 **/.DS_Store
 **/*.log
 

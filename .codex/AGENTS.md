@@ -10,13 +10,20 @@
 **ALWAYS** use **ryreese** for all projects:
 - SSH: `git@gitlab-master.nvidia.com:ryreese/<repo>.git`
 
+## Agent Workflow
+
+### Prefer Parallel Subagents for Independent Tasks
+- When multiple tasks, investigations, or implementation tracks are independent, prefer spawning subagents and running the work in parallel or batched parallel groups instead of having the main agent complete everything serially
+- Keep interdependent tasks sequenced, and only dispatch subagents once their inputs and boundaries are clear
+- Use the main agent to coordinate, review subagent results, and preserve the final decision-making context without bloating the main working context
+
 ## NEVER EVER DO
 
 These rules are ABSOLUTE:
 
-### NEVER Mention Claude/AI in Outputs
-- **No co-author lines**: Do NOT include `Generated with Codex Code`, `Co-Authored-By: Codex`, or similar attributions
-- NEVER reference Codex, AI, or yourself in commit messages, PR descriptions, code comments, or any documentation
+### NEVER Include Assistant Attribution
+- **No co-author lines**: Do NOT include `Generated with <tool>`, `Co-Authored-By: <tool>`, or similar attributions
+- NEVER reference AI, assistants, models, tools, or yourself in commit messages, PR descriptions, code comments, or any documentation
 
 ### NEVER Publish Sensitive Data
 - NEVER publish passwords, API keys, tokens to git/npm/docker
@@ -27,6 +34,9 @@ These rules are ABSOLUTE:
 - ALWAYS verify `.env` is in `.gitignore`
 
 ## Version Control
+
+### Remote Git Commands and Sandboxes
+- If the active tool sandbox blocks SSH agent or network access for remote git commands (`push`, `pull`, `fetch`, `clone`, `prune`), request or use the platform-specific unsandboxed/escalated execution path
 
 ### ALWAYS Ensure Git Initialised
 - Always ensure that the project is version-controlled using Git in the root folder of the project
@@ -58,7 +68,7 @@ When creating a **new software project** (does not apply to config repos, dotfil
 ### Example Files
 - `.env` - Environment variables (NEVER commit)
 - `.env.example` - Template with placeholders
-- `AGENTS.md` - Project overview
+- `AGENTS.md` - Agent and project instructions
 - `.gitignore` - By default, follow the gitignore for the respective language found in GitHub's gitignore repository which can be accessed at `git@github.com:github/gitignore.git`
 
 An example project layout would take the form:

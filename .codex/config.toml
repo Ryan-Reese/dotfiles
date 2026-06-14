@@ -4,7 +4,7 @@ plan_mode_reasoning_effort = "xhigh"
 sandbox_mode = "workspace-write"
 approval_policy = "on-request"
 service_tier = "fast"
-approvals_reviewer = "guardian_subagent"
+approvals_reviewer = "auto_review"
 [projects."/Users/ryreese/Documents/nvidia/nvalchemi-toolkit"]
 trust_level = "trusted"
 
@@ -17,6 +17,9 @@ trust_level = "trusted"
 [projects."/Users/ryreese/Documents/nvidia/academic-grants"]
 trust_level = "trusted"
 
+[projects."/Users/ryreese/Documents/nvidia/ntrain"]
+trust_level = "trusted"
+
 [plugins."github@openai-curated"]
 enabled = true
 
@@ -26,8 +29,24 @@ enabled = true
 [plugins."slack@openai-curated"]
 enabled = true
 
+[plugins."superpowers@openai-curated"]
+enabled = true
+
+[plugins."nvidia@openai-curated"]
+enabled = true
+
+[plugins."vault@vault"]
+enabled = true
+
+[marketplaces.vault]
+source_type = "local"
+source = "/Users/ryreese/Documents"
+
 [tui]
-status_line = ["model-with-reasoning", "fast-mode", "context-used", "current-dir", "git-branch", "five-hour-limit"]
+status_line = ["current-dir", "git-branch", "branch-changes", "model-with-reasoning", "permissions", "approval-mode", "context-used"]
+status_line_use_colors = true
+theme = "bamboo-multiplex"
+vim_mode_default = true
 
 [tui.keymap.global]
 copy = "ctrl-t"
@@ -37,13 +56,10 @@ open_transcript = "ctrl-o"
 insert_newline = ["ctrl-j", "ctrl-m", "enter", "shift-enter", "alt-enter"]
 
 [tui.model_availability_nux]
-"gpt-5.5" = 3
+"gpt-5.5" = 4
 
 [mcp_servers.maas_gitlab]
 url = "https://maas.prd.astra.nvidia.com/maas/gitlab/mcp"
-
-[mcp_servers.maas_outlook]
-url = "https://maas.prd.astra.nvidia.com/maas/outlook/mcp"
 
 [mcp_servers.maas_gdrive]
 url = "https://maas.prd.astra.nvidia.com/maas/gdrive/mcp"
@@ -57,8 +73,20 @@ url = "https://maas.prd.astra.nvidia.com/maas/confluence/mcp"
 [mcp_servers.maas_sharepoint]
 url = "https://maas.prd.astra.nvidia.com/maas/sharepoint/mcp"
 
+[mcp_servers.maas_outlook]
+url = "https://maas.prd.astra.nvidia.com/maas/outlook/mcp"
+
+[mcp_servers.maas_outlook.oauth]
+client_id = "eci-prd-pub-160c4545-f84f-4483-bf7c-d2450e5c0216"
+
 [mcp_servers.maas_slack]
-url = "https://maas.stg.astra.nvidia.com/maas/slack/mcp"
+url = "https://maas.prd.astra.nvidia.com/maas/slack/mcp"
+
+[mcp_servers.maas_slack.oauth]
+client_id = "eci-prd-pub-160c4545-f84f-4483-bf7c-d2450e5c0216"
+
+[mcp_servers.maas_nsight_cuda]
+url = "https://maas.prd.astra.nvidia.com/maas/nsight_cuda/mcp"
 
 [notice]
 fast_default_opt_out = true

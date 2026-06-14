@@ -5,4 +5,5 @@
 
 # Project-scope files (not user-scope)
 \.claude/settings\.local\.json
+AGENTS\.md
 CLAUDE\.md
